@@ -3,910 +3,269 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>AshleyBuilt — Handyman & Micro Excavation</title>
+        <title>AshleyBuilt — Handyman & Micro Excavation Services</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap"
             rel="stylesheet"
         />
-        <style>
-            :root {
-              --coal: #1a1a1a;
-              --bark: #2c2418;
-              --sand: #e8dcc8;
-              --cream: #f5f0e8;
-              --rust: #c45a2d;
-              --rust-light: #d4733f;
-              --olive: #5a6b3c;
-              --olive-light: #6d8047;
-              --slate: #4a5568;
-              --white: #fefcf9;
-              --amber: #d49a3e;
-              <
-            }
-
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-
-            html { scroll-behavior: smooth; }
-
-            body {
-              font-family: 'Outfit', sans-serif;
-              background: var(--white);
-              color: var(--coal);
-              overflow-x: hidden;
-            }
-
-            /* ─── NAV ─── */
-            nav {
-              position: fixed;
-              top: 0;
-              left: 0;
-              right: 0;
-              z-index: 100;
-              padding: 1rem 2rem;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              transition: all 0.4s ease;
-              background: transparent;
-            }
-            nav.scrolled {
-              background: rgba(26,26,26,0.95);
-              backdrop-filter: blur(12px);
-              padding: 0.7rem 2rem;
-              box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-            }
-            .logo {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.6rem;
-              color: var(--white);
-              text-decoration: none;
-              letter-spacing: -0.5px;
-            }
-            .logo span { color: var(--rust); }
-            .nav-links {
-              display: flex;
-              gap: 2rem;
-              list-style: none;
-              align-items: center;
-            }
-            .nav-links a {
-              color: var(--sand);
-              text-decoration: none;
-              font-size: 0.85rem;
-              font-weight: 500;
-              letter-spacing: 0.5px;
-              text-transform: uppercase;
-              transition: color 0.3s;
-              position: relative;
-            }
-            .nav-links a::after {
-              content: '';
-              position: absolute;
-              bottom: -4px;
-              left: 0;
-              width: 0;
-              height: 2px;
-              background: var(--rust);
-              transition: width 0.3s;
-            }
-            .nav-links a:hover::after { width: 100%; }
-            .nav-links a:hover { color: var(--white); }
-            .nav-cta {
-              background: var(--rust) !important;
-              color: var(--white) !important;
-              padding: 0.6rem 1.4rem;
-              border-radius: 4px;
-              font-weight: 600 !important;
-              transition: background 0.3s !important;
-            }
-            .nav-cta:hover { background: var(--rust-light) !important; }
-            .nav-cta::after { display: none !important; }
-
-            .mobile-toggle {
-              display: none;
-              flex-direction: column;
-              gap: 5px;
-              cursor: pointer;
-              z-index: 101;
-            }
-            .mobile-toggle span {
-              width: 26px;
-              height: 2px;
-              background: var(--white);
-              transition: all 0.3s;
-            }
-
-            /* ─── HERO ─── */
-            .hero {
-              min-height: 100vh;
-              background: linear-gradient(165deg, var(--coal) 0%, var(--bark) 50%, #3a2d1c 100%);
-              display: flex;
-              align-items: center;
-              position: relative;
-              overflow: hidden;
-            }
-            .hero::before {
-              content: '';
-              position: absolute;
-              top: 0; left: 0; right: 0; bottom: 0;
-              background:
-                radial-gradient(ellipse at 80% 20%, rgba(196,90,45,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(90,107,60,0.1) 0%, transparent 60%);
-            }
-            .hero-grid-bg {
-              position: absolute;
-              top: 0; left: 0; right: 0; bottom: 0;
-              background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-              background-size: 80px 80px;
-            }
-            .hero-content {
-              position: relative;
-              z-index: 2;
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 0 2rem;
-              width: 100%;
-            }
-            .hero-tag {
-              display: inline-flex;
-              align-items: center;
-              gap: 0.5rem;
-              background: rgba(196,90,45,0.15);
-              border: 1px solid rgba(196,90,45,0.3);
-              color: var(--rust-light);
-              padding: 0.5rem 1rem;
-              border-radius: 100px;
-              font-size: 0.75rem;
-              font-weight: 600;
-              text-transform: uppercase;
-              letter-spacing: 1.5px;
-              margin-bottom: 2rem;
-              animation: fadeUp 0.8s ease both;
-            }
-            .hero-tag::before {
-              content: '';
-              width: 6px;
-              height: 6px;
-              background: var(--rust);
-              border-radius: 50%;
-              animation: pulse 2s infinite;
-            }
-            @keyframes pulse {
-              0%, 100% { opacity: 1; }
-              50% { opacity: 0.4; }
-            }
-            .hero h1 {
-              font-family: 'DM Serif Display', serif;
-              font-size: clamp(3rem, 7vw, 5.5rem);
-              color: var(--white);
-              line-height: 1.05;
-              margin-bottom: 1.5rem;
-              animation: fadeUp 0.8s ease 0.15s both;
-            }
-            .hero h1 em {
-              font-style: normal;
-              color: var(--rust);
-              position: relative;
-            }
-            .hero-sub {
-              font-size: 1.15rem;
-              color: var(--sand);
-              max-width: 520px;
-              line-height: 1.7;
-              font-weight: 300;
-              margin-bottom: 2.5rem;
-              animation: fadeUp 0.8s ease 0.3s both;
-            }
-            .hero-actions {
-              display: flex;
-              gap: 1rem;
-              flex-wrap: wrap;
-              animation: fadeUp 0.8s ease 0.45s both;
-            }
-            .btn {
-              padding: 1rem 2rem;
-              border: none;
-              border-radius: 4px;
-              font-family: 'Outfit', sans-serif;
-              font-size: 0.9rem;
-              font-weight: 600;
-              cursor: pointer;
-              text-decoration: none;
-              display: inline-flex;
-              align-items: center;
-              gap: 0.5rem;
-              transition: all 0.3s;
-            }
-            .btn-primary {
-              background: var(--rust);
-              color: var(--white);
-            }
-            .btn-primary:hover { background: var(--rust-light); transform: translateY(-2px); }
-            .btn-outline {
-              background: transparent;
-              color: var(--sand);
-              border: 1px solid rgba(232,220,200,0.3);
-            }
-            .btn-outline:hover { border-color: var(--sand); background: rgba(232,220,200,0.06); }
-
-            .hero-stats {
-              display: flex;
-              gap: 3rem;
-              margin-top: 4rem;
-              padding-top: 2.5rem;
-              border-top: 1px solid rgba(255,255,255,0.08);
-              animation: fadeUp 0.8s ease 0.6s both;
-            }
-            .hero-stat h3 {
-              font-family: 'DM Serif Display', serif;
-              font-size: 2rem;
-              color: var(--rust);
-            }
-            .hero-stat p {
-              font-size: 0.75rem;
-              color: rgba(232,220,200,0.6);
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              margin-top: 0.25rem;
-            }
-
-            @keyframes fadeUp {
-              from { opacity: 0; transform: translateY(30px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-
-            /* ─── SECTION BASE ─── */
-            section { padding: 6rem 2rem; }
-            .container { max-width: 1200px; margin: 0 auto; }
-            .section-tag {
-              display: inline-flex;
-              align-items: center;
-              gap: 0.5rem;
-              font-size: 0.7rem;
-              font-weight: 600;
-              letter-spacing: 2px;
-              text-transform: uppercase;
-              color: var(--rust);
-              margin-bottom: 1rem;
-            }
-            .section-tag::before {
-              content: '';
-              width: 20px;
-              height: 2px;
-              background: var(--rust);
-            }
-            .section-title {
-              font-family: 'DM Serif Display', serif;
-              font-size: clamp(2rem, 4vw, 3rem);
-              color: var(--coal);
-              margin-bottom: 1rem;
-              line-height: 1.15;
-            }
-            .section-subtitle {
-              font-size: 1.05rem;
-              color: var(--slate);
-              max-width: 560px;
-              line-height: 1.7;
-              font-weight: 300;
-            }
-
-            /* ─── PAGE 2: HANDYMAN SERVICES ─── */
-            #handyman { background: var(--cream); }
-            .services-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-              gap: 1.5rem;
-              margin-top: 3rem;
-            }
-            .service-card {
-              background: var(--white);
-              border-radius: 8px;
-              padding: 2.5rem 2rem;
-              border: 1px solid rgba(44,36,24,0.06);
-              transition: all 0.4s ease;
-              position: relative;
-              overflow: hidden;
-            }
-            .service-card::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 4px;
-              height: 0;
-              background: var(--rust);
-              transition: height 0.4s ease;
-            }
-            .service-card:hover::before { height: 100%; }
-            .service-card:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 12px 40px rgba(44,36,24,0.08);
-            }
-            .service-icon {
-              width: 52px;
-              height: 52px;
-              background: rgba(196,90,45,0.08);
-              border-radius: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 1.5rem;
-              margin-bottom: 1.5rem;
-            }
-            .service-card h3 {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.35rem;
-              margin-bottom: 0.75rem;
-              color: var(--coal);
-            }
-            .service-card p {
-              font-size: 0.9rem;
-              color: var(--slate);
-              line-height: 1.65;
-              margin-bottom: 1.25rem;
-            }
-            .service-meta {
-              display: flex;
-              gap: 1.5rem;
-              padding-top: 1.25rem;
-              border-top: 1px solid rgba(44,36,24,0.06);
-              flex-wrap: wrap;
-            }
-            .service-meta-item {
-              display: flex;
-              flex-direction: column;
-            }
-            .service-meta-item .label {
-              font-size: 0.65rem;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              color: rgba(74,85,104,0.6);
-              margin-bottom: 0.2rem;
-            }
-            .service-meta-item .value {
-              font-weight: 600;
-              font-size: 0.9rem;
-              color: var(--coal);
-            }
-            .service-meta-item .value.highlight {
-              color: var(--olive);
-            }
-
-            /* ─── PAGE 3: EXCAVATION ─── */
-            #excavation { background: var(--coal); }
-            #excavation .section-tag { color: var(--amber); }
-            #excavation .section-tag::before { background: var(--amber); }
-            #excavation .section-title { color: var(--white); }
-            #excavation .section-subtitle { color: var(--sand); }
-
-            .excavation-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-              gap: 1.5rem;
-              margin-top: 3rem;
-            }
-            .exc-card {
-              background: rgba(255,255,255,0.04);
-              border: 1px solid rgba(255,255,255,0.08);
-              border-radius: 8px;
-              padding: 2rem;
-              transition: all 0.4s ease;
-              position: relative;
-            }
-            .exc-card:hover {
-              background: rgba(255,255,255,0.07);
-              border-color: rgba(212,154,62,0.3);
-              transform: translateY(-3px);
-            }
-            .exc-card .exc-num {
-              font-family: 'DM Serif Display', serif;
-              font-size: 2.5rem;
-              color: rgba(212,154,62,0.15);
-              position: absolute;
-              top: 1rem;
-              right: 1.5rem;
-            }
-            .exc-card h3 {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.2rem;
-              color: var(--white);
-              margin-bottom: 0.65rem;
-            }
-            .exc-card p {
-              font-size: 0.85rem;
-              color: var(--sand);
-              line-height: 1.6;
-              opacity: 0.75;
-              margin-bottom: 1rem;
-            }
-            .exc-tag {
-              display: inline-block;
-              font-size: 0.65rem;
-              font-weight: 600;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              color: var(--amber);
-              background: rgba(212,154,62,0.1);
-              padding: 0.35rem 0.75rem;
-              border-radius: 100px;
-              border: 1px solid rgba(212,154,62,0.2);
-            }
-            .machine-specs {
-              margin-top: 3rem;
-              background: rgba(255,255,255,0.03);
-              border: 1px solid rgba(255,255,255,0.06);
-              border-radius: 8px;
-              padding: 2.5rem;
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-              gap: 2rem;
-            }
-            .spec-item { text-align: center; }
-            .spec-item .spec-val {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.8rem;
-              color: var(--amber);
-              margin-bottom: 0.35rem;
-            }
-            .spec-item .spec-label {
-              font-size: 0.7rem;
-              text-transform: uppercase;
-              letter-spacing: 1.5px;
-              color: rgba(232,220,200,0.5);
-            }
-
-            /* ─── PAGE 4: WHY US ─── */
-            #why { background: var(--white); }
-            .why-grid {
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-              gap: 1.5rem;
-              margin-top: 3rem;
-            }
-            .why-card {
-              padding: 2.5rem 2rem;
-              border-radius: 8px;
-              border: 1px solid rgba(44,36,24,0.06);
-              text-align: center;
-              transition: all 0.3s;
-            }
-            .why-card:hover {
-              border-color: rgba(196,90,45,0.15);
-              box-shadow: 0 8px 30px rgba(44,36,24,0.05);
-            }
-            .why-icon {
-              font-size: 2rem;
-              margin-bottom: 1.25rem;
-            }
-            .why-card h3 {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.15rem;
-              margin-bottom: 0.65rem;
-            }
-            .why-card p {
-              font-size: 0.85rem;
-              color: var(--slate);
-              line-height: 1.6;
-            }
-
-            /* ─── PRICING SNAPSHOT ─── */
-            .pricing-row {
-              margin-top: 4rem;
-              padding-top: 4rem;
-              border-top: 1px solid rgba(44,36,24,0.08);
-            }
-            .pricing-table {
-              width: 100%;
-              border-collapse: separate;
-              border-spacing: 0;
-              margin-top: 2rem;
-              border-radius: 8px;
-              overflow: hidden;
-              border: 1px solid rgba(44,36,24,0.08);
-            }
-            .pricing-table thead {
-              background: var(--coal);
-            }
-            .pricing-table th {
-              padding: 1rem 1.5rem;
-              color: var(--sand);
-              font-size: 0.7rem;
-              text-transform: uppercase;
-              letter-spacing: 1.5px;
-              font-weight: 600;
-              text-align: left;
-            }
-            .pricing-table td {
-              padding: 1rem 1.5rem;
-              font-size: 0.9rem;
-              border-bottom: 1px solid rgba(44,36,24,0.06);
-              color: var(--coal);
-            }
-            .pricing-table tbody tr:nth-child(even) {
-              background: rgba(232,220,200,0.15);
-            }
-            .pricing-table tbody tr:hover {
-              background: rgba(196,90,45,0.04);
-            }
-            .price-val {
-              font-weight: 600;
-              color: var(--rust);
-            }
-
-            /* ─── PAGE 5: CONTACT ─── */
-            #contact {
-              background: linear-gradient(165deg, var(--bark) 0%, var(--coal) 100%);
-              position: relative;
-            }
-            #contact::before {
-              content: '';
-              position: absolute;
-              top: 0; left: 0; right: 0; bottom: 0;
-              background: radial-gradient(ellipse at 30% 50%, rgba(196,90,45,0.08) 0%, transparent 60%);
-            }
-            .contact-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 4rem;
-              position: relative;
-              z-index: 2;
-              margin-top: 3rem;
-            }
-            .contact-info h3 {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.5rem;
-              color: var(--white);
-              margin-bottom: 1rem;
-            }
-            .contact-info p {
-              color: var(--sand);
-              font-size: 0.95rem;
-              line-height: 1.7;
-              opacity: 0.8;
-              margin-bottom: 2rem;
-            }
-            .contact-detail {
-              display: flex;
-              align-items: center;
-              gap: 1rem;
-              margin-bottom: 1.25rem;
-            }
-            .contact-detail-icon {
-              width: 44px;
-              height: 44px;
-              background: rgba(196,90,45,0.12);
-              border-radius: 8px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 1.1rem;
-              flex-shrink: 0;
-            }
-            .contact-detail-text .cd-label {
-              font-size: 0.65rem;
-              text-transform: uppercase;
-              letter-spacing: 1.5px;
-              color: rgba(232,220,200,0.4);
-            }
-            .contact-detail-text .cd-value {
-              color: var(--white);
-              font-weight: 500;
-              font-size: 1rem;
-              margin-top: 0.15rem;
-            }
-            .contact-form {
-              display: flex;
-              flex-direction: column;
-              gap: 1rem;
-            }
-            .form-row { display: flex; gap: 1rem; }
-            .form-row > * { flex: 1; }
-            .contact-form input,
-            .contact-form textarea,
-            .contact-form select {
-              width: 100%;
-              padding: 0.9rem 1.2rem;
-              background: rgba(255,255,255,0.06);
-              border: 1px solid rgba(255,255,255,0.1);
-              border-radius: 6px;
-              color: var(--white);
-              font-family: 'Outfit', sans-serif;
-              font-size: 0.9rem;
-              transition: all 0.3s;
-              outline: none;
-            }
-            .contact-form input::placeholder,
-            .contact-form textarea::placeholder {
-              color: rgba(232,220,200,0.35);
-            }
-            .contact-form input:focus,
-            .contact-form textarea:focus,
-            .contact-form select:focus {
-              border-color: var(--rust);
-              background: rgba(255,255,255,0.08);
-            }
-            .contact-form textarea { min-height: 120px; resize: vertical; }
-            .contact-form select option { background: var(--coal); color: var(--white); }
-            .btn-submit {
-              background: var(--rust);
-              color: var(--white);
-              border: none;
-              padding: 1rem 2rem;
-              border-radius: 4px;
-              font-family: 'Outfit', sans-serif;
-              font-size: 0.95rem;
-              font-weight: 600;
-              cursor: pointer;
-              transition: all 0.3s;
-              align-self: flex-start;
-            }
-            .btn-submit:hover { background: var(--rust-light); transform: translateY(-2px); }
-
-            /* ─── FOOTER ─── */
-            footer {
-              background: #111;
-              padding: 3rem 2rem;
-              text-align: center;
-            }
-            .footer-logo {
-              font-family: 'DM Serif Display', serif;
-              font-size: 1.4rem;
-              color: var(--white);
-              margin-bottom: 0.75rem;
-            }
-            .footer-logo span { color: var(--rust); }
-            footer p {
-              color: rgba(232,220,200,0.3);
-              font-size: 0.8rem;
-            }
-            .footer-links {
-              display: flex;
-              justify-content: center;
-              gap: 2rem;
-              margin: 1rem 0;
-            }
-            .footer-links a {
-              color: rgba(232,220,200,0.5);
-              text-decoration: none;
-              font-size: 0.8rem;
-              transition: color 0.3s;
-            }
-            .footer-links a:hover { color: var(--rust); }
-
-            /* ─── RESPONSIVE ─── */
-            @media (max-width: 768px) {
-              .nav-links { display: none; }
-              .mobile-toggle { display: flex; }
-              .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(26,26,26,0.97);
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                z-index: 100;
-              }
-              .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-              .services-grid { grid-template-columns: 1fr; }
-              .why-grid { grid-template-columns: 1fr; }
-              .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-              .form-row { flex-direction: column; }
-              .pricing-table { font-size: 0.8rem; }
-              .pricing-table th, .pricing-table td { padding: 0.7rem 0.8rem; }
-              .machine-specs { grid-template-columns: repeat(2, 1fr); }
-            }
-        </style>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <!-- ═══ NAV ═══ -->
-        <nav id="navbar">
-            <a href="#" class="logo">ashley<span>built</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#handyman">Handyman</a></li>
-                <li><a href="#excavation">Excavation</a></li>
-                <li><a href="#why">Why Us</a></li>
-                <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-            </ul>
-            <div
-                class="mobile-toggle"
-                id="mobileToggle"
-                onclick="
-                    document.getElementById('navLinks').classList.toggle('open')
-                "
-            >
-                <span></span><span></span><span></span>
+        <!-- ═══════════════════════════════════════════════════════
+     NAV
+     ═══════════════════════════════════════════════════════ -->
+        <nav class="site-nav" id="siteNav">
+            <div class="container">
+                <div class="nav-inner">
+                    <a href="#" class="nav-logo">Ashley<span>Built</span></a>
+                    <div class="nav-links" id="navLinks">
+                        <a href="#handyman">Handyman</a>
+                        <a href="#excavation">Excavation</a>
+                        <a href="#why">Why Us</a>
+                        <a href="#pricing">Pricing</a>
+                        <a
+                            href="#contact"
+                            class="btn btn--solid"
+                            style="font-size: 0.8rem"
+                            >Get a Quote</a
+                        >
+                    </div>
+                    <button
+                        class="mobile-menu-btn"
+                        id="menuBtn"
+                        aria-label="Toggle menu"
+                    >
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
             </div>
         </nav>
 
-        <!-- ═══ PAGE 1: HERO ═══ -->
-        <section class="hero" id="home">
-            <div class="hero-grid-bg"></div>
-            <div class="hero-content">
-                <div class="hero-tag">Handyman + Micro Excavation</div>
-                <h1>Built Right.<br />Every <em>Single</em> Time.</h1>
-                <p class="hero-sub">
-                    Professional handyman repairs and 1.1-ton micro excavation
-                    services for residential and light commercial projects. One
-                    call handles it all.
-                </p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary"
-                        >Get Free Estimate →</a
-                    >
-                    <a href="#handyman" class="btn btn-outline"
-                        >View Services</a
-                    >
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <h3>$60–85</h3>
-                        <p>Hourly Rate</p>
+        <!-- ═══════════════════════════════════════════════════════
+     PAGE 1 — HERO
+     ═══════════════════════════════════════════════════════ -->
+        <section class="hero dot-bg" id="home">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <p class="hero-eyebrow">
+                            Handyman · Excavation · Done Right
+                        </p>
+                        <h1>Built Right.<br />Every <em>Single</em> Time.</h1>
+                        <p class="hero-sub">
+                            Professional handyman repairs and 1.1-ton micro
+                            excavation for residential and light commercial
+                            projects. One crew, two capabilities — no runaround.
+                        </p>
+                        <div class="hero-ctas">
+                            <a href="#contact" class="btn btn--solid"
+                                >Get Free Estimate</a
+                            >
+                            <a href="#handyman" class="btn btn--ghost"
+                                >View Services ↓</a
+                            >
+                        </div>
                     </div>
-                    <div class="hero-stat">
-                        <h3>5+</h3>
-                        <p>Core Services</p>
-                    </div>
-                    test
-                    <div class="hero-stat">
-                        <h3>1.1T</h3>
-                        <p>Micro Excavator</p>
-                    </div>
-                    <div class="hero-stat">
-                        <h3>100%</h3>
-                        <p>Insured</p>
-                    </div>
+                    <aside class="hero-panel">
+                        <div class="hero-stat">
+                            <p class="stat-label">Handyman Rate</p>
+                            <p class="stat-value">$60–85</p>
+                            <p class="stat-note">per hour · most jobs</p>
+                        </div>
+                        <div class="hero-stat">
+                            <p class="stat-label">Excavation Rate</p>
+                            <p class="stat-value">$85–125</p>
+                            <p class="stat-note">
+                                per hour · operator + machine
+                            </p>
+                        </div>
+                        <div class="hero-stat">
+                            <p class="stat-label">Machine</p>
+                            <p class="stat-value">1.1 Ton</p>
+                            <p class="stat-note">
+                                micro excavator · fits through gates
+                            </p>
+                        </div>
+                        <div class="hero-stat">
+                            <p class="stat-label">Coverage</p>
+                            <p class="stat-value">100%</p>
+                            <p class="stat-note">
+                                licensed · insured · guaranteed
+                            </p>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </section>
 
-        <!-- ═══ PAGE 2: HANDYMAN SERVICES ═══ -->
-        <section id="handyman">
+        <!-- ═══════════════════════════════════════════════════════
+     PAGE 2 — HANDYMAN SERVICES
+     ═══════════════════════════════════════════════════════ -->
+        <section class="services-section" id="handyman">
             <div class="container">
-                <div class="section-tag">Top Handyman Services</div>
-                <h2 class="section-title">Most Requested. Highest Value.</h2>
-                <p class="section-subtitle">
-                    The five services homeowners call for most — ranked by
-                    demand frequency and earning potential. These cover 80% of
-                    all residential repair requests.
-                </p>
+                <div class="services-header">
+                    <div>
+                        <p class="section-eyebrow">Top Handyman Services</p>
+                        <h2 class="section-title">
+                            Most Requested. Highest Value.
+                        </h2>
+                        <p class="section-sub">
+                            The five services homeowners call about most —
+                            ranked by demand frequency and earning potential per
+                            hour.
+                        </p>
+                    </div>
+                    <a href="#contact" class="btn btn--outline"
+                        >Book a Handyman</a
+                    >
+                </div>
 
                 <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔧</div>
+                    <!-- 1 -->
+                    <div class="service-card reveal">
+                        <p class="service-rank">01</p>
                         <h3>Plumbing Repairs</h3>
                         <p>
                             Leaky taps, slow drains, toilet repairs, fixture
                             replacements, washing machine hookups, and minor
-                            pipe work. The #1 most-called service year over
+                            pipe work. The number-one most-called service every
                             year.
                         </p>
                         <div class="service-meta">
-                            <div class="service-meta-item">
-                                <span class="label">Demand Rank</span>
-                                <span class="value">#1 Highest</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Hourly Rate</p>
+                                <p class="meta-value meta-value--green">
+                                    $75 – $85
+                                </p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Hourly Rate</span>
-                                <span class="value highlight"
-                                    >$75 – $85/hr</span
-                                >
+                            <div class="meta-block">
+                                <p class="meta-label">Avg Job Cost</p>
+                                <p class="meta-value">$150 – $350</p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Avg Job</span>
-                                <span class="value">$150 – $350</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Demand</p>
+                                <p class="meta-value">Highest</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>Electrical & Lighting</h3>
+                    <!-- 2 -->
+                    <div class="service-card reveal">
+                        <p class="service-rank">02</p>
+                        <h3>Electrical &amp; Lighting</h3>
                         <p>
                             Light fixture swaps, ceiling fan installs, outlet
-                            and switch replacement, smoke detector updates, and
-                            smart home device setup. Growing fast with connected
+                            and switch replacement, smoke detectors, and
+                            smart-home device setup. Growing fast with connected
                             homes.
                         </p>
                         <div class="service-meta">
-                            <div class="service-meta-item">
-                                <span class="label">Demand Rank</span>
-                                <span class="value">#2 Highest</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Hourly Rate</p>
+                                <p class="meta-value meta-value--green">
+                                    $70 – $85
+                                </p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Hourly Rate</span>
-                                <span class="value highlight"
-                                    >$70 – $85/hr</span
-                                >
+                            <div class="meta-block">
+                                <p class="meta-label">Avg Job Cost</p>
+                                <p class="meta-value">$100 – $300</p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Avg Job</span>
-                                <span class="value">$100 – $300</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Demand</p>
+                                <p class="meta-value">Very High</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card">
-                        <div class="service-icon">🎨</div>
-                        <h3>Painting & Drywall</h3>
+                    <!-- 3 -->
+                    <div class="service-card reveal">
+                        <p class="service-rank">03</p>
+                        <h3>Painting &amp; Drywall</h3>
                         <p>
                             Interior and exterior painting, touch-ups, drywall
                             patching, hole repair, crack filling, and texture
-                            matching. Cosmetic repairs homeowners dread doing
+                            matching. The cosmetic fix homeowners hate doing
                             themselves.
                         </p>
                         <div class="service-meta">
-                            <div class="service-meta-item">
-                                <span class="label">Demand Rank</span>
-                                <span class="value">#3 Highest</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Hourly Rate</p>
+                                <p class="meta-value meta-value--green">
+                                    $60 – $80
+                                </p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Hourly Rate</span>
-                                <span class="value highlight"
-                                    >$60 – $80/hr</span
-                                >
+                            <div class="meta-block">
+                                <p class="meta-label">Avg Job Cost</p>
+                                <p class="meta-value">$200 – $600</p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Avg Job</span>
-                                <span class="value">$200 – $600</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Demand</p>
+                                <p class="meta-value">High</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card">
-                        <div class="service-icon">🪟</div>
-                        <h3>Mounting & Installations</h3>
+                    <!-- 4 -->
+                    <div class="service-card reveal">
+                        <p class="service-rank">04</p>
+                        <h3>Mounting &amp; Installations</h3>
                         <p>
                             TV mounting, shelving, curtain rods, mirrors,
                             blinds, furniture assembly, grab bars, and door
-                            hardware. High frequency — homeowners call weekly
-                            for these tasks.
+                            hardware. High frequency — people call weekly for
+                            these.
                         </p>
                         <div class="service-meta">
-                            <div class="service-meta-item">
-                                <span class="label">Demand Rank</span>
-                                <span class="value">#4 Highest</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Hourly Rate</p>
+                                <p class="meta-value meta-value--green">
+                                    $60 – $75
+                                </p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Hourly Rate</span>
-                                <span class="value highlight"
-                                    >$60 – $75/hr</span
-                                >
+                            <div class="meta-block">
+                                <p class="meta-label">Avg Job Cost</p>
+                                <p class="meta-value">$100 – $250</p>
                             </div>
-                            <div class="service-meta-item">
-                                <span class="label">Avg Job</span>
-                                <span class="value">$100 – $250</span>
+                            <div class="meta-block">
+                                <p class="meta-label">Demand</p>
+                                <p class="meta-value">High</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="service-card">
-                        <div class="service-icon">🏠</div>
-                        <h3>General Maintenance</h3>
-                        <p>
-                            Gutter cleaning, caulking, weatherstripping, door
-                            adjustments, deck repairs, pressure washing, and
-                            seasonal upkeep. Recurring revenue — sell as
-                            maintenance plans.
-                        </p>
-                        <div class="service-meta">
-                            <div class="service-meta-item">
-                                <span class="label">Demand Rank</span>
-                                <span class="value">#5 Highest</span>
-                            </div>
-                            <div class="service-meta-item">
-                                <span class="label">Hourly Rate</span>
-                                <span class="value highlight"
-                                    >$55 – $75/hr</span
-                                >
-                            </div>
-                            <div class="service-meta-item">
-                                <span class="label">Avg Job</span>
-                                <span class="value">$150 – $500</span>
+                    <!-- 5 (spans full width) -->
+                    <div class="service-card service-card--full reveal">
+                        <p class="service-rank">05</p>
+                        <div>
+                            <h3>General Maintenance &amp; Seasonal Upkeep</h3>
+                            <p>
+                                Gutter cleaning, caulking, weatherstripping,
+                                door adjustments, deck repairs, pressure
+                                washing, and storm prep. Package as a recurring
+                                maintenance plan for predictable monthly revenue
+                                — subscriptions are the handyman industry's
+                                fastest-growing model.
+                            </p>
+                            <div class="service-meta">
+                                <div class="meta-block">
+                                    <p class="meta-label">Hourly Rate</p>
+                                    <p class="meta-value meta-value--green">
+                                        $55 – $75
+                                    </p>
+                                </div>
+                                <div class="meta-block">
+                                    <p class="meta-label">Avg Job Cost</p>
+                                    <p class="meta-value">$150 – $500</p>
+                                </div>
+                                <div class="meta-block">
+                                    <p class="meta-label">Demand</p>
+                                    <p class="meta-value">Steady / Recurring</p>
+                                </div>
+                                <div class="meta-block">
+                                    <p class="meta-label">Best For</p>
+                                    <p class="meta-value">Maintenance Plans</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -914,185 +273,237 @@
             </div>
         </section>
 
-        <!-- ═══ PAGE 3: EXCAVATION ═══ -->
-        <section id="excavation">
+        <!-- ═══════════════════════════════════════════════════════
+     PAGE 3 — EXCAVATION
+     ═══════════════════════════════════════════════════════ -->
+        <section class="excavation-section dot-bg" id="excavation">
             <div class="container">
-                <div class="section-tag">Micro Excavation Services</div>
-                <h2 class="section-title">
+                <p class="section-eyebrow">Micro Excavation Services</p>
+                <h2 class="section-title section-title--light">
                     Big Dig Power.<br />Backyard Friendly.
                 </h2>
-                <p class="section-subtitle">
-                    Our 1.1-ton micro excavator fits through gates, over lawns,
-                    and into tight residential spaces where full-size equipment
-                    can't go.
+                <p class="section-sub section-sub--light">
+                    Our 1.1-ton micro excavator fits through standard gates,
+                    rolls over lawns, and works in tight residential spaces
+                    where full-size equipment can't go.
                 </p>
 
                 <div class="excavation-grid">
-                    <div class="exc-card">
-                        <span class="exc-num">01</span>
-                        <h3>Trenching & Utilities</h3>
+                    <div class="exc-card reveal">
+                        <p class="exc-num">01</p>
+                        <h3>Trenching &amp; Utilities</h3>
                         <p>
                             Water lines, sewer connections, electrical conduit,
                             and irrigation. Clean, narrow trenches with minimal
-                            lawn disruption — the most common micro excavator
-                            job.
+                            lawn damage.
                         </p>
-                        <span class="exc-tag">Highest demand</span>
+                        <span class="exc-tag">Highest Demand</span>
                     </div>
-                    <div class="exc-card">
-                        <span class="exc-num">02</span>
-                        <h3>French Drains & Drainage</h3>
+
+                    <div class="exc-card reveal">
+                        <p class="exc-num">02</p>
+                        <h3>French Drains &amp; Drainage</h3>
                         <p>
                             Solve yard flooding and foundation water issues.
                             Precise graded trenches for French drains, catch
-                            basins, and channel drains around residential
-                            properties.
+                            basins, and channel drains.
                         </p>
-                        <span class="exc-tag">High profit</span>
+                        <span class="exc-tag">High Profit</span>
                     </div>
-                    <div class="exc-card">
-                        <span class="exc-num">03</span>
-                        <h3>Landscaping & Grading</h3>
+
+                    <div class="exc-card reveal">
+                        <p class="exc-num">03</p>
+                        <h3>Landscaping &amp; Grading</h3>
                         <p>
-                            Yard leveling, garden bed excavation, tree and stump
-                            removal, soil redistribution, and small retaining
-                            wall footings. Perfect for backyard transformations.
+                            Yard leveling, garden bed excavation, tree removal,
+                            soil redistribution, and small retaining wall
+                            footings.
                         </p>
-                        <span class="exc-tag">Year-round</span>
+                        <span class="exc-tag">Year-Round</span>
                     </div>
-                    <div class="exc-card">
-                        <span class="exc-num">04</span>
-                        <h3>Post Holes & Footings</h3>
+
+                    <div class="exc-card reveal">
+                        <p class="exc-num">04</p>
+                        <h3>Post Holes &amp; Footings</h3>
                         <p>
-                            Fence posts, deck footings, pergola bases, sign
-                            posts, and mailbox installs. Auger attachment digs
-                            uniform holes fast — dozens per day.
+                            Fence posts, deck footings, pergola bases, and sign
+                            posts. Auger attachment digs dozens of uniform holes
+                            per day.
                         </p>
-                        <span class="exc-tag">Quick jobs</span>
+                        <span class="exc-tag">Quick Jobs</span>
                     </div>
-                    <div class="exc-card">
-                        <span class="exc-num">05</span>
-                        <h3>Small Demolition & Cleanout</h3>
+
+                    <div class="exc-card reveal">
+                        <p class="exc-num">05</p>
+                        <h3>Small Demo &amp; Cleanout</h3>
                         <p>
                             Break up old concrete, patios, sidewalks, and
-                            driveways. Remove debris, stumps, and rocks.
-                            Hydraulic thumb grabs irregular materials with
-                            precision.
+                            driveways. Remove debris, stumps, and rocks with
+                            hydraulic thumb.
                         </p>
-                        <span class="exc-tag">High value</span>
+                        <span class="exc-tag">High Value</span>
                     </div>
-                    <div class="exc-card">
-                        <span class="exc-num">06</span>
-                        <h3>Foundations & Site Prep</h3>
+
+                    <div class="exc-card reveal">
+                        <p class="exc-num">06</p>
+                        <h3>Foundations &amp; Site Prep</h3>
                         <p>
-                            Shed pads, small additions, garage footings, and
-                            spa/hot tub pads. Light site prep and backfilling
-                            where a full crew isn't needed.
+                            Shed pads, small additions, garage footings, hot tub
+                            pads. Light site prep and backfilling for
+                            residential projects.
                         </p>
                         <span class="exc-tag">Residential</span>
                     </div>
                 </div>
 
                 <div class="machine-specs">
-                    <div class="spec-item">
-                        <div class="spec-val">1.1T</div>
-                        <div class="spec-label">Operating Weight</div>
+                    <div class="spec">
+                        <p class="spec-val">1.1T</p>
+                        <p class="spec-label">Operating Weight</p>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-val">5.4'</div>
-                        <div class="spec-label">Max Dig Depth</div>
+                    <div class="spec">
+                        <p class="spec-val">5.4'</p>
+                        <p class="spec-label">Max Dig Depth</p>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-val">30"</div>
-                        <div class="spec-label">Machine Width</div>
+                    <div class="spec">
+                        <p class="spec-val">~30"</p>
+                        <p class="spec-label">Machine Width</p>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-val">360°</div>
-                        <div class="spec-label">Swing Rotation</div>
+                    <div class="spec">
+                        <p class="spec-val">360°</p>
+                        <p class="spec-label">Swing Rotation</p>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-val">13.5</div>
-                        <div class="spec-label">HP Engine</div>
+                    <div class="spec">
+                        <p class="spec-val">13.5hp</p>
+                        <p class="spec-label">Engine Power</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ═══ PAGE 4: WHY US + PRICING ═══ -->
-        <section id="why">
+        <!-- ═══════════════════════════════════════════════════════
+     PAGE 4 — WHY US + PRICING
+     ═══════════════════════════════════════════════════════ -->
+        <section class="why-section" id="why">
             <div class="container">
-                <div class="section-tag">Why AshleyBuilt</div>
+                <p class="section-eyebrow">Why AshleyBuilt</p>
                 <h2 class="section-title">One crew. Two capabilities.</h2>
-                <p class="section-subtitle">
+                <p class="section-sub">
                     Most handymen can't dig. Most diggers don't do finish work.
-                    We bridge the gap with a single trusted team.
+                    We bridge the gap with one reliable team.
                 </p>
 
                 <div class="why-grid">
-                    <div class="why-card">
-                        <div class="why-icon">🔒</div>
-                        <h3>Licensed & Insured</h3>
+                    <div class="why-card reveal">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Licensed &amp; Insured</h3>
                         <p>
-                            Full liability coverage for every job. You're never
-                            at risk when AshleyBuilt is on site.
+                            Full liability coverage on every job. You're never
+                            exposed when AshleyBuilt is on site.
                         </p>
                     </div>
-                    <div class="why-card">
-                        <div class="why-icon">📐</div>
+
+                    <div class="why-card reveal">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
                         <h3>One Call, Done All</h3>
                         <p>
                             Bundle handyman repairs with excavation in a single
                             visit. Save time and money on combined projects.
                         </p>
                     </div>
-                    <div class="why-card">
-                        <div class="why-icon">⏱</div>
-                        <h3>Same-Week Scheduling</h3>
+
+                    <div class="why-card reveal">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <h3>Same-Week Booking</h3>
                         <p>
                             No month-long waitlists. Most jobs booked within 3–5
-                            business days, with same-day available for
-                            emergencies.
+                            business days; same-day slots for emergencies.
                         </p>
                     </div>
-                    <div class="why-card">
-                        <div class="why-icon">🏡</div>
+
+                    <div class="why-card reveal">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                                />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg>
+                        </div>
                         <h3>Residential Specialist</h3>
                         <p>
-                            We know homes. From crawlspaces to backyards, we
-                            treat your property like our own.
+                            From crawlspaces to backyards, we know homes — and
+                            we treat your property like it's ours.
                         </p>
                     </div>
-                    <div class="why-card">
-                        <div class="why-icon">💬</div>
+
+                    <div class="why-card reveal">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path
+                                    d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                                />
+                            </svg>
+                        </div>
                         <h3>Transparent Pricing</h3>
                         <p>
-                            Free estimates before we start. Hourly or flat-rate
-                            — your choice. No surprises on the invoice.
+                            Free estimates before any work. Hourly or flat-rate
+                            — your call. No surprise line items.
                         </p>
                     </div>
-                    <div class="why-card">
-                        <div class="why-icon">📸</div>
+
+                    <div class="why-card reveal">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+                                />
+                                <circle cx="12" cy="13" r="3" />
+                            </svg>
+                        </div>
                         <h3>Photo Documentation</h3>
                         <p>
-                            Before-and-after photos on every project. See
-                            exactly what was done and share with confidence.
+                            Before-and-after photos on every project so you see
+                            exactly what was done.
                         </p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Pricing Snapshot -->
-                <div class="pricing-row">
-                    <div class="section-tag">Quick Reference</div>
-                    <h2 class="section-title">Pricing Snapshot</h2>
-                    <p class="section-subtitle">
-                        Typical ranges — final quotes based on scope, materials,
-                        and site conditions.
-                    </p>
+        <!-- ── PRICING TABLE ── -->
+        <section class="pricing-section" id="pricing">
+            <div class="container">
+                <p class="section-eyebrow">Quick Reference</p>
+                <h2 class="section-title">Pricing Snapshot</h2>
+                <p class="section-sub">
+                    Typical ranges — final quotes are based on scope, materials,
+                    and site conditions. All estimates are free.
+                </p>
+
+                <div class="pricing-table-wrap">
                     <table class="pricing-table">
                         <thead>
                             <tr>
                                 <th>Service</th>
-                                <th>Rate Range</th>
+                                <th>Rate</th>
                                 <th>Typical Job Cost</th>
                                 <th>Common Tasks</th>
                             </tr>
@@ -1100,39 +511,43 @@
                         <tbody>
                             <tr>
                                 <td><strong>Plumbing Repairs</strong></td>
-                                <td class="price-val">$75 – $85/hr</td>
+                                <td class="price-highlight">$75 – $85/hr</td>
                                 <td>$150 – $350</td>
                                 <td>Faucets, drains, toilets, fixtures</td>
                             </tr>
                             <tr>
-                                <td><strong>Electrical & Lighting</strong></td>
-                                <td class="price-val">$70 – $85/hr</td>
+                                <td>
+                                    <strong>Electrical &amp; Lighting</strong>
+                                </td>
+                                <td class="price-highlight">$70 – $85/hr</td>
                                 <td>$100 – $300</td>
                                 <td>Fans, outlets, switches, smart devices</td>
                             </tr>
                             <tr>
-                                <td><strong>Painting & Drywall</strong></td>
-                                <td class="price-val">$60 – $80/hr</td>
+                                <td><strong>Painting &amp; Drywall</strong></td>
+                                <td class="price-highlight">$60 – $80/hr</td>
                                 <td>$200 – $600</td>
                                 <td>Rooms, patches, touch-ups, textures</td>
                             </tr>
                             <tr>
-                                <td><strong>Mounting & Install</strong></td>
-                                <td class="price-val">$60 – $75/hr</td>
+                                <td><strong>Mounting &amp; Install</strong></td>
+                                <td class="price-highlight">$60 – $75/hr</td>
                                 <td>$100 – $250</td>
-                                <td>TVs, shelves, blinds, assembly</td>
+                                <td>
+                                    TVs, shelves, blinds, furniture assembly
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>General Maintenance</strong></td>
-                                <td class="price-val">$55 – $75/hr</td>
+                                <td class="price-highlight">$55 – $75/hr</td>
                                 <td>$150 – $500</td>
                                 <td>Gutters, caulking, seasonal upkeep</td>
                             </tr>
                             <tr>
                                 <td><strong>Micro Excavation</strong></td>
-                                <td class="price-val">$85 – $125/hr</td>
+                                <td class="price-highlight">$85 – $125/hr</td>
                                 <td>$500 – $3,000</td>
-                                <td>Trenching, drains, grading, demo</td>
+                                <td>Trenching, drainage, grading, demo</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1140,117 +555,224 @@
             </div>
         </section>
 
-        <!-- ═══ PAGE 5: CONTACT ═══ -->
-        <section id="contact">
+        <!-- ═══════════════════════════════════════════════════════
+     PAGE 5 — CONTACT
+     ═══════════════════════════════════════════════════════ -->
+        <section class="contact-section dot-bg" id="contact">
             <div class="container">
-                <div class="section-tag" style="color: var(--rust)">
+                <p class="section-eyebrow" style="color: var(--mist)">
                     Get In Touch
-                </div>
-                <h2 class="section-title" style="color: var(--white)">
-                    Let's Talk About<br />Your Project
+                </p>
+                <h2 class="section-title section-title--light">
+                    Let's Talk About Your Project
                 </h2>
 
                 <div class="contact-grid">
                     <div class="contact-info">
                         <h3>Free estimates, always.</h3>
                         <p>
-                            Whether it's a leaky faucet or a full drainage
+                            Whether it's a dripping faucet or a full drainage
                             install, we'll scope it out and give you an honest
-                            quote — no pressure, no obligation.
+                            quote — no pressure, no obligation, no fine print.
                         </p>
 
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">📞</div>
-                            <div class="contact-detail-text">
-                                <div class="cd-label">Phone</div>
-                                <div class="cd-value">(555) 123-4567</div>
+                        <div class="contact-row">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="ct-label">Phone</p>
+                                <p class="ct-value">(555) 123-4567</p>
                             </div>
                         </div>
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">✉️</div>
-                            <div class="contact-detail-text">
-                                <div class="cd-label">Email</div>
-                                <div class="cd-value">
-                                    hello@ashleybuilt.com
-                                </div>
+
+                        <div class="contact-row">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                    />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="ct-label">Email</p>
+                                <p class="ct-value">hello@ashleybuilt.com</p>
                             </div>
                         </div>
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">📍</div>
-                            <div class="contact-detail-text">
-                                <div class="cd-label">Service Area</div>
-                                <div class="cd-value">
-                                    Your City & Surrounding 30 Miles
-                                </div>
+
+                        <div class="contact-row">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                                    />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="ct-label">Service Area</p>
+                                <p class="ct-value">
+                                    Your City &amp; 30-Mile Radius
+                                </p>
                             </div>
                         </div>
-                        <div class="contact-detail">
-                            <div class="contact-detail-icon">🕐</div>
-                            <div class="contact-detail-text">
-                                <div class="cd-label">Hours</div>
-                                <div class="cd-value">Mon – Sat, 7AM – 6PM</div>
+
+                        <div class="contact-row">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                <p class="ct-label">Hours</p>
+                                <p class="ct-value">Mon – Sat · 7 AM – 6 PM</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="contact-form">
+                    <form
+                        class="contact-form"
+                        onsubmit="
+                            event.preventDefault();
+                            alert(
+                                'Quote request sent! We\'ll be in touch within 24 hours.',
+                            );
+                        "
+                    >
                         <div class="form-row">
-                            <input type="text" placeholder="Your Name" />
-                            <input type="tel" placeholder="Phone Number" />
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                required
+                            />
+                            <input
+                                type="tel"
+                                placeholder="Phone Number"
+                                required
+                            />
                         </div>
-                        <input type="email" placeholder="Email Address" />
-                        <select>
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            required
+                        />
+                        <select required>
                             <option value="" disabled selected>
                                 What do you need?
                             </option>
-                            <option>Plumbing Repair</option>
-                            <option>Electrical / Lighting</option>
-                            <option>Painting / Drywall</option>
-                            <option>Mounting / Installation</option>
-                            <option>General Maintenance</option>
-                            <option>Micro Excavation — Trenching</option>
-                            <option>Micro Excavation — Drainage</option>
-                            <option>Micro Excavation — Landscaping</option>
-                            <option>Micro Excavation — Demolition</option>
+                            <optgroup label="Handyman">
+                                <option>Plumbing Repair</option>
+                                <option>Electrical / Lighting</option>
+                                <option>Painting / Drywall</option>
+                                <option>Mounting / Installation</option>
+                                <option>General Maintenance</option>
+                            </optgroup>
+                            <optgroup label="Micro Excavation">
+                                <option>Trenching &amp; Utilities</option>
+                                <option>French Drains / Drainage</option>
+                                <option>Landscaping / Grading</option>
+                                <option>Post Holes / Footings</option>
+                                <option>Demo / Cleanout</option>
+                                <option>Foundations / Site Prep</option>
+                            </optgroup>
                             <option>Other / Multiple Services</option>
                         </select>
                         <textarea
-                            placeholder="Tell us about the job — the more detail, the faster we can quote."
+                            placeholder="Tell us about the job — location, timeline, any details that help us quote faster."
                         ></textarea>
-                        <button class="btn-submit">Send Request →</button>
-                    </div>
+                        <button
+                            type="submit"
+                            class="btn btn--solid"
+                            style="align-self: flex-start"
+                        >
+                            Send Request →
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
 
-        <!-- ═══ FOOTER ═══ -->
-        <footer>
-            <div class="footer-logo">ashley<span>built</span></div>
-            <div class="footer-links">
-                <a href="#handyman">Handyman</a>
-                <a href="#excavation">Excavation</a>
-                <a href="#why">Why Us</a>
-                <a href="#contact">Contact</a>
+        <!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-brand">
+                        <h4>Ashley<span>Built</span></h4>
+                        <p>
+                            Professional handyman and micro excavation services.
+                            Licensed, insured, and built for residential work.
+                        </p>
+                    </div>
+                    <div class="footer-nav">
+                        <div class="footer-col">
+                            <h5>Handyman</h5>
+                            <a href="#handyman">Plumbing</a>
+                            <a href="#handyman">Electrical</a>
+                            <a href="#handyman">Painting</a>
+                            <a href="#handyman">Installs</a>
+                            <a href="#handyman">Maintenance</a>
+                        </div>
+                        <div class="footer-col">
+                            <h5>Excavation</h5>
+                            <a href="#excavation">Trenching</a>
+                            <a href="#excavation">Drainage</a>
+                            <a href="#excavation">Grading</a>
+                            <a href="#excavation">Post Holes</a>
+                            <a href="#excavation">Demo</a>
+                        </div>
+                        <div class="footer-col">
+                            <h5>Company</h5>
+                            <a href="#why">Why Us</a>
+                            <a href="#pricing">Pricing</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>
+                        &copy; 2026 AshleyBuilt. All rights reserved. Licensed
+                        &amp; Insured.
+                    </p>
+                    <p>ashleybuilt.com</p>
+                </div>
             </div>
-            <p>© 2026 AshleyBuilt. All rights reserved. Licensed & Insured.</p>
         </footer>
 
+        <!-- ═══════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════ -->
         <script>
-            // Nav scroll effect
-            const nav = document.getElementById("navbar");
+            // ── Sticky nav background
+            const nav = document.getElementById("siteNav");
             window.addEventListener("scroll", () => {
-                nav.classList.toggle("scrolled", window.scrollY > 50);
+                nav.classList.toggle("scrolled", window.scrollY > 60);
             });
 
-            // Smooth scroll for nav links
-            document.querySelectorAll('a[href^="#"]').forEach((a) => {
-                a.addEventListener("click", (e) => {
+            // ── Mobile menu
+            document.getElementById("menuBtn").addEventListener("click", () => {
+                document.getElementById("navLinks").classList.toggle("open");
+            });
+
+            // ── Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach((link) => {
+                link.addEventListener("click", (e) => {
                     e.preventDefault();
                     const target = document.querySelector(
-                        a.getAttribute("href"),
+                        link.getAttribute("href"),
                     );
                     if (target) {
-                        target.scrollIntoView({ behavior: "smooth" });
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
                         document
                             .getElementById("navLinks")
                             .classList.remove("open");
@@ -1258,27 +780,28 @@
                 });
             });
 
-            // Animate on scroll
-            const observer = new IntersectionObserver(
+            // ── Reveal on scroll
+            const reveals = document.querySelectorAll(".reveal");
+            const revealObserver = new IntersectionObserver(
                 (entries) => {
-                    entries.forEach((entry) => {
+                    entries.forEach((entry, i) => {
                         if (entry.isIntersecting) {
-                            entry.target.style.opacity = "1";
-                            entry.target.style.transform = "translateY(0)";
+                            // stagger siblings
+                            const siblings = [
+                                ...entry.target.parentElement.querySelectorAll(
+                                    ".reveal",
+                                ),
+                            ];
+                            const idx = siblings.indexOf(entry.target);
+                            entry.target.style.transitionDelay = `${idx * 0.08}s`;
+                            entry.target.classList.add("visible");
+                            revealObserver.unobserve(entry.target);
                         }
                     });
                 },
-                { threshold: 0.1 },
+                { threshold: 0.08 },
             );
-
-            document
-                .querySelectorAll(".service-card, .exc-card, .why-card")
-                .forEach((el) => {
-                    el.style.opacity = "0";
-                    el.style.transform = "translateY(20px)";
-                    el.style.transition = "all 0.6s ease";
-                    observer.observe(el);
-                });
+            reveals.forEach((el) => revealObserver.observe(el));
         </script>
     </body>
 </html>
